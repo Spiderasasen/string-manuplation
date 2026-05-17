@@ -5,6 +5,7 @@ int getLength(char* string);
 void inHalf(char* string, char* dest);
 int halfLength(char* string);
 void otherHalf(char* string, char* dest);
+void reverse(char* string, char* dest);
 
 int main() {
     //main strings
@@ -27,6 +28,13 @@ int main() {
     otherHalf(string1, endHalf1);
     otherHalf(string2, endHalf2);
     printf("Last Half: %s, %s\n", endHalf1, endHalf2);
+
+    //getting the reverse
+    char reverseString1[50];
+    char reverseString2[50];
+    reverse(string1, reverseString1);
+    reverse(string2, reverseString2);
+    printf("Reversed Strings: %s, %s\n", reverseString1, reverseString2);
 
     return 0;
 }
@@ -56,6 +64,13 @@ void otherHalf(char* string, char* dest) {
 }
 
 //printing the string in reverse
+void reverse(char* string, char* dest) {
+    int length = getLength(string);
+    for (int i = 0; i < length; i++) {
+        dest[i] = string[length-1-i];
+    }
+    dest[length] = '\0';
+}
 
 //getting the length of the string
 int getLength(char* string) {
