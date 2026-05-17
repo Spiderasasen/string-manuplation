@@ -2,7 +2,7 @@
 
 //making the functions avalible
 int getLength(char* string);
-void inHalf(char* string);
+void inHalf(char* string, char* dest);
 
 int main() {
     //main strings
@@ -10,29 +10,29 @@ int main() {
     char* string2 = "Hello";
 
     //printing the half of the string
-    char* halfString1 = string1;
-    char* halfString2 = string2;
+    char halfString1[50];
+    char halfString2[50];
 
     printf("Printing the half of the string\n");
-    printf("Original Strings: %s, %s\n", halfString1, halfString2);
-    inHalf(halfString1);
-    inHalf(halfString2);
+    printf("Original Strings: %s, %s\n", string1, string2);
+    inHalf(string1, halfString1);
+    inHalf(string2, halfString2);
     printf("New Strings: %s, %s\n", halfString1, halfString2);
 
     return 0;
 }
 
 //spliting and printing the string in half
-void inHalf(char* string) {
+void inHalf(char* string, char* dest) {
     //getting the half of the string
     int length = getLength(string);
     int halfLength = length / 2;
 
-    //only changing the the string in the half
+    //only changing the string in the half
     for (int i = 0; i < halfLength; i++) {
-        putchar(string[i]);
+        dest[i] = string[i];
     }
-    putchar('\n');
+    dest[halfLength] = '\0';
 }
 
 //spliting the string in half, and only printing the ending half
